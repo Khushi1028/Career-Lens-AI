@@ -9,45 +9,18 @@ import time
 
 st.set_page_config(page_title="Career Lens AI", page_icon="🎯", layout="wide")
 
-# Updated CSS - Maine yahan sirf styling behtar ki hai, baaki code pura wahi hai
 st.markdown("""
 <style>
-.stApp {background-color: #f0f2f6;}
-
-/* Updated Heading Style */
-.main-title {
-    font-size: 4.5rem !important;
-    text-align: center !important;
-    font-weight: 900 !important;
-    color: #1e293b !important;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.sub-title {
-    text-align: center;
-    font-size: 1.5rem !important;
-    color: #64748b !important;
-    font-weight: 500;
-    margin-bottom: 30px;
-}
-
-.box {background: #ffffff; padding: 25px; border-radius: 15px; margin: 10px 0px; color: #1e293b; box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
-
-.stButton>button {
-    background: linear-gradient(90deg, #FF6B6B 0%, #FF8E53 100%);
-    color: white; 
-    font-weight: bold;
-    border-radius: 12px; 
-    width: 100%; 
-    height: 50px; 
-    font-size: 18px; 
-    border: none;
-}
-
-[data-testid="stMetric"] {background: #ffffff !important; border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e2e8f0;}
-[data-testid="stMetricLabel"] {color: #64748b !important; font-size: 16px !important;}
-[data-testid="stMetricValue"] {color: #1e293b !important; font-weight: bold !important;}
+.main {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+.stApp {background: transparent;}
+.main-title {font-size: 3.2rem; color: white; text-align: center; font-weight: 800; text-shadow: 2px 2px 4px #000;}
+.sub-title {text-align: center; font-size: 1.2rem; color: white; font-weight: 500;}
+.box {background: rgba(255,255,255,0.95); padding: 20px; border-radius: 15px; margin: 10px 0px; color: #1e293b;}
+.stButton>button {background: linear-gradient(90deg, #FF6B6B 0%, #FF8E53 100%); color: white; font-weight: bold;
+border-radius: 12px; width: 100%; height: 50px; font-size: 18px; border: none;}
+[data-testid="stMetric"] {background: #1e293b !important; border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);}
+[data-testid="stMetricLabel"] {color: #94a3b8 !important; font-size: 16px !important;}
+[data-testid="stMetricValue"] {color: #ffffff !important; font-weight: bold !important;}
 </style>
 """, unsafe_allow_html=True)
 
