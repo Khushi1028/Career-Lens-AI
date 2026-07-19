@@ -147,11 +147,14 @@ if menu == "Resume Checker":
     st.markdown('<div class="box">', unsafe_allow_html=True)
     st.markdown("<h3 style='color: #222;'>1️⃣ Upload Your Resume</h3>", unsafe_allow_html=True)
     st.markdown("<p style='color: #333;'>Drag and drop your PDF or DOCX file here</p>", unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+   st.markdown('</div>', unsafe_allow_html=True)
 
-    my_skills = []  # <-- ye line bhi 4 space andar honi chahiye
-    if uploaded_file is not None:
-        with st.spinner('🔍 AI is parsing the resume content...'):
+my_skills = []
+uploaded_file = st.file_uploader("Choose a file", type=["pdf", "docx"], label_visibility="collapsed")
+
+if uploaded_file is not None:
+    with st.spinner('🔍 AI is parsing the resume content...'):
+        # aage ka code
             time.sleep(2)
             if uploaded_file.name.endswith('.pdf'):
                 resume_data = read_pdf(uploaded_file)
