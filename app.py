@@ -9,45 +9,39 @@ import time
 
 st.set_page_config(page_title="Career Lens AI", page_icon="🎯", layout="wide")
 
-# Updated CSS - Maine yahan sirf styling behtar ki hai, baaki code pura wahi hai
+# CSS
 st.markdown("""
 <style>
 .stApp {background-color: #f0f2f6;}
-
-/* Updated Heading Style */
 .main-title {
-    font-size: 4.5rem !important;
-    text-align: center !important;
-    font-weight: 900 !important;
-    color: #1e293b !important;
+    font-size: 4.5rem!important;
+    text-align: center!important;
+    font-weight: 900!important;
+    color: #1e293b!important;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 .sub-title {
     text-align: center;
-    font-size: 1.5rem !important;
-    color: #64748b !important;
+    font-size: 1.5rem!important;
+    color: #64748b!important;
     font-weight: 500;
     margin-bottom: 30px;
 }
-
 .box {background: #ffffff; padding: 25px; border-radius: 15px; margin: 10px 0px; color: #1e293b; box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
-
 .stButton>button {
     background: linear-gradient(90deg, #FF6B6B 0%, #FF8E53 100%);
-    color: white; 
+    color: white;
     font-weight: bold;
-    border-radius: 12px; 
-    width: 100%; 
-    height: 50px; 
-    font-size: 18px; 
+    border-radius: 12px;
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
     border: none;
 }
-
-[data-testid="stMetric"] {background: #ffffff !important; border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e2e8f0;}
-[data-testid="stMetricLabel"] {color: #64748b !important; font-size: 16px !important;}
-[data-testid="stMetricValue"] {color: #1e293b !important; font-weight: bold !important;}
+[data-testid="stMetric"] {background: #ffffff!important; border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e2e8f0;}
+[data-testid="stMetricLabel"] {color: #64748b!important; font-size: 16px!important;}
+[data-testid="stMetricValue"] {color: #1e293b!important; font-weight: bold!important;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -154,68 +148,64 @@ if menu == "Resume Checker":
 
     if uploaded_file is not None:
         with st.spinner('🔍 AI is parsing the resume content...'):
-            st.success("File upload ho gayi! Ab processing karenge")
-
-if uploaded_file is not None:
-    with st.spinner('🔍 AI is parsing the resume content...'):
-        # aage ka code
             time.sleep(2)
             if uploaded_file.name.endswith('.pdf'):
                 resume_data = read_pdf(uploaded_file)
             else:
                 resume_data = read_docx(uploaded_file)
             my_skills = find_skills(resume_data)
-        st.success(f"✅ **Extracted Skills:** {', '.join(my_skills).title()}")
 
-    if len(my_skills) > 0:
-        st.markdown('<div class="box">', unsafe_allow_html=True)
-        st.write("### 2️⃣ Select Target Job Profile")
-        job = st.selectbox("👇 Choose your target job from the list:", df['Job'])
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.success(f"✅ **Extracted Skills:** {', '.join(my_skills).title() if my_skills else 'No skills found'}")
 
-        if st.button("🔍 Run Resume Analysis"):
-            job_row = df[df['Job'] == job].iloc[0]
-            required = [s.strip().lower() for s in job_row['Skills'].split(',')]
+        if len(my_skills) > 0:
+            st.markdown('<div class="box">', unsafe_allow_html=True)
+            st.write("### 2️⃣ Select Target Job Profile")
+            job = st.selectbox("👇 Choose your target job from the list:", df['Job'])
+            st.markdown('</div>', unsafe_allow_html=True)
 
-            matched = [s for s in required if s in my_skills]
-            not_matched = [s for s in required if s not in my_skills]
-            score = int((len(matched) / len(required)) * 100)
+            if st.button("🔍 Run Resume Analysis"):
+                job_row = df[df['Job'] == job].iloc[0]
+                required = [s.strip().lower() for s in job_row['Skills'].split(',')]
 
-            st.write("---")
-            st.write("### 📊 Metrics Performance Analysis")
-            c1,c2,c3,c4 = st.columns(4)
-            c1.metric("🎯 Target Job", job)
-            c2.metric("💰 Average Salary Range", job_row['Salary'])
-            c3.metric("📈 Skill Alignment", f"{len(matched)}/{len(required)}")
-            c4.metric("🤖 System ATS Score", f"{score}%")
+                matched = [s for s in required if s in my_skills]
+                not_matched = [s for s in required if s not in my_skills]
+                score = int((len(matched) / len(required)) * 100)
 
-            st.progress(score)
+                st.write("---")
+                st.write("### 📊 Metrics Performance Analysis")
+                c1,c2,c3,c4 = st.columns(4)
+                c1.metric("🎯 Target Job", job)
+                c2.metric("💰 Average Salary Range", job_row['Salary'])
+                c3.metric("📈 Skill Alignment", f"{len(matched)}/{len(required)}")
+                c4.metric("🤖 System ATS Score", f"{score}%")
 
-            if score >= 80:
-                st.success("🎉 Excellent! Your profile is highly aligned and ready for this job.")
-            elif score >= 50:
-                st.warning("⚠️ Good baseline alignment, but some additional upskilling is recommended.")
-            else:
-                st.error("📚 Significant skill gaps identified. Consider learning the missing competencies.")
+                st.progress(score)
 
-            st.write("---")
-            col1,col2 = st.columns(2)
-            with col1:
-                st.markdown("#### ✅ Identified Strong Skills")
-                for s in matched:
-                    st.success(f"{s.title()}")
-            with col2:
-                st.markdown("#### ❌ Missing Core Competencies")
-                for s in not_matched:
-                    st.error(f"{s.title()}")
-                    st.link_button(f"📺 Learn {s.title()}", f"https://youtube.com/results?search_query={s}+programming+tutorial")
+                if score >= 80:
+                    st.success("🎉 Excellent! Your profile is highly aligned and ready for this job.")
+                elif score >= 50:
+                    st.warning("⚠️ Good baseline alignment, but some additional upskilling is recommended.")
+                else:
+                    st.error("📚 Significant skill gaps identified. Consider learning the missing competencies.")
 
-            st.write("---")
-            st.write("### 💬 Target Interview Flashcards - Click to expand answer matrix")
-            q = questions.get(job, questions['Default'])
-            for que, ans in q.items():
-                with st.expander(que):
-                    st.write(ans)
+                st.write("---")
+                col1,col2 = st.columns(2)
+                with col1:
+                    st.markdown("#### ✅ Identified Strong Skills")
+                    for s in matched:
+                        st.success(f"{s.title()}")
+                with col2:
+                    st.markdown("#### ❌ Missing Core Competencies")
+                    for s in not_matched:
+                        st.error(f"{s.title()}")
+                        st.link_button(f"📺 Learn {s.title()}", f"https://youtube.com/results?search_query={s}+programming+tutorial")
+
+                st.write("---")
+                st.write("### 💬 Target Interview Flashcards - Click to expand answer matrix")
+                q = questions.get(job, questions['Default'])
+                for que, ans in q.items():
+                    with st.expander(que):
+                        st.write(ans)
 
 elif menu == "Analytics":
     st.markdown('<p class="main-title">📊 Analytics Dashboard</p>', unsafe_allow_html=True)
