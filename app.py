@@ -145,8 +145,8 @@ if menu == "Resume Checker":
     st.write("")
 
     st.markdown('<div class="box">', unsafe_allow_html=True)
-    st.write("### 1️⃣ Upload Your Resume")
-    uploaded_file = st.file_uploader("Drag and drop your PDF or DOCX file here", type=['pdf', 'docx'])
+    st.markdown("<h3 style='color: #222;'>1️⃣ Upload Your Resume</h3>", unsafe_allow_html=True)
+st.markdown("<p style='color: #333333;'>Drag and drop your PDF or DOCX file here</p>", unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
     my_skills = []
