@@ -17,3 +17,9 @@ An AI-powered platform for MCA students to analyze resumes, check ATS scores, an
 
 ## ⚙️ How to Run
 1. Clone the repository
+## 📸 Screenshots
+
+![Home Page](WhatsApp%20Image%202026-07-19%20at%2012.49.23.jpeg)
+![Resume Analysis](WhatsApp%20Image%202026-07-19%20at%2012.51.21.jpeg)
+![Dashboard](WhatsApp%20Image%202026-07-19%20at%2012.52.20.jpeg)
+![About](WhatsApp%20Image%202026-07-19%20at%2012.52.52.jpeg)
