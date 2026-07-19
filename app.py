@@ -12,56 +12,42 @@ st.set_page_config(page_title="Career Lens AI", page_icon="🎯", layout="wide")
 # Updated CSS - Maine yahan sirf styling behtar ki hai, baaki code pura wahi hai
 st.markdown("""
 <style>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+.stApp {background-color: #f0f2f6;}
 
-.main {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
-.stApp {background: transparent;}
-body, .stApp, .stMarkdown {color: #1e293b !important;} /* YE LINE NAYI HAI - sabka text dark kar dega */
-
+/* Updated Heading Style */
 .main-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 9rem; 
-    background: linear-gradient(90deg, #FFD700 0%, #FF8E53 50%, #FF6B6B 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-align: center;
-    font-weight: 900;
+    font-size: 4.5rem !important;
+    text-align: center !important;
+    font-weight: 900 !important;
+    color: #1e293b !important;
+    margin-top: 10px;
     margin-bottom: 10px;
-    margin-top: 20px;
-    letter-spacing: -3px;
-    text-shadow: 0 0 50px rgba(255, 142, 83, 0.6);
-    animation: glowPulse 2.5s ease-in-out infinite;
-}
-@keyframes glowPulse {
-    0% { filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.5)); }
-    50% { filter: drop-shadow(0 0 35px rgba(255, 142, 83, 0.8)); }
-    100% { filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.5)); }
 }
 
 .sub-title {
     text-align: center;
-    font-size: 1.8rem;
-    color: #FFFFFF !important; /* YE WHITE HI RAHEGA KYUKI BACKGROUND COLORFUL HAI */
-    font-weight: 600;
-    margin-bottom: 50px;
-    letter-spacing: 1.5px;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    font-size: 1.5rem !important;
+    color: #64748b !important;
+    font-weight: 500;
+    margin-bottom: 30px;
 }
 
-.box {background: rgba(255,255,255,0.95); padding: 25px; border-radius: 18px; margin: 15px 0px; color: #1e293b !important; box-shadow: 0 8px 25px rgba(0,0,0,0.2);} /* YAHAN COLOR ADD KIYA */
-.stButton>button {background: linear-gradient(90deg, #FF6B6B 0%, #FF8E53 100%); color: white; font-weight: bold;
-border-radius: 12px; width: 100%; height: 52px; font-size: 18px; border: none; transition: all 0.3s;}
-.stButton>button:hover {transform: scale(1.02);}
-[data-testid="stMetric"] {background: #1e293b!important; border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);}
-[data-testid="stMetricLabel"] {color: #94a3b8!important; font-size: 16px!important;}
-[data-testid="stMetricValue"] {color: #ffffff!important; font-weight: bold!important;}
+.box {background: #ffffff; padding: 25px; border-radius: 15px; margin: 10px 0px; color: #1e293b; box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
 
-/* YE 3 NAYI LINE - About aur normal text ke liye */
-.stMarkdown, p, li, div {color: #1e293b !important;}
-h1, h2, h3 {color: #1e293b !important;}
-</style>
+.stButton>button {
+    background: linear-gradient(90deg, #FF6B6B 0%, #FF8E53 100%);
+    color: white; 
+    font-weight: bold;
+    border-radius: 12px; 
+    width: 100%; 
+    height: 50px; 
+    font-size: 18px; 
+    border: none;
+}
+
+[data-testid="stMetric"] {background: #ffffff !important; border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e2e8f0;}
+[data-testid="stMetricLabel"] {color: #64748b !important; font-size: 16px !important;}
+[data-testid="stMetricValue"] {color: #1e293b !important; font-weight: bold !important;}
 </style>
 """, unsafe_allow_html=True)
 
