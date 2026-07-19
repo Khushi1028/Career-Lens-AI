@@ -1,90 +1,52 @@
-import streamlit as st
-import pandas as pd
-import PyPDF2
-import docx
-import plotly.express as px
-from streamlit_option_menu import option_menu
-import io
-
-st.set_page_config(page_title="Career Lens AI", layout="wide", page_icon="🎯")
-
-# Function to read resume
-def read_resume(file):
-    text = ""
-    if file.name.endswith('.pdf'):
-        pdf_reader = PyPDF2.PdfReader(file)
-        for page in pdf_reader.pages:
-            text += page.extract_text()
-    elif file.name.endswith('.docx'):
-        doc = docx.Document(file)
-        for para in doc.paragraphs:
-            text += para.text + "\n"
-    elif file.name.endswith('.txt'):
-        text = file.getvalue().decode("utf-8")
-    return text
-
-# Sidebar
-with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=80)
-    st.title("Khushi")
-    st.caption("MCA 2nd Year")
-    
-    selected = option_menu(
-        "Menu", ["Resume Checker", "Analytics", "About"],
-        icons=['house', 'bar-chart', 'info-circle'], menu_icon="cast", default_index=0,
-        styles={
-            "container": {"padding": "0!important", "background-color": "#262730"},
-            "icon": {"color": "white", "font-size": "18px"}, 
-            "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "color": "white"},
-            "nav-link-selected": {"background-color": "#FF4B4B", "color": "white"},
-        }
-    )
-
-# Main Page
-if selected == "Resume Checker":
-    st.title("🎯 Career Lens AI")
-    st.subheader("AI Powered Resume Analyzer")
-    
-    uploaded_file = st.file_uploader("1 Upload Your Resume", type=['pdf', 'docx', 'txt'])
-    
-    st.subheader("2 Select Target Job Profile")
-    job_profile = st.selectbox("Select your Target Job", ["AI Engineer", "Data Scientist", "Web Developer", "ML Engineer"])
-    
-    if uploaded_file is not None:
-        st.success(f"✅ File Uploaded: {uploaded_file.name}")
-        
-        if st.button("🚀 Run Resume Analysis", type="primary"):
-            with st.spinner("Analyzing your resume..."):
-                resume_text = read_resume(uploaded_file)
-                st.success("Analysis Complete!")
-                
-                col1, col2, col3, col4 = st.columns(4)
-                with col1: st.metric("Target Job", job_profile)
-                with col2: st.metric("Avg Salary", "12-20 LPA")
-                with col3: st.metric("Skill Alignment", "1/3")
-                with col4: st.metric("ATS Score", "33%")
-                    
-                st.warning("📦 Significant skill gaps identified.")
-                
-                col1, col2 = st.columns(2)
-                with col1:
-                    st.success("✅ Identified Strong Skills")
-                    st.info("Python")
-                with col2:
-                    st.error("❌ Missing Core Competencies")
-                    st.write("Machine Learning")
-                    st.link_button("📚 Learn Machine Learning", "https://www.youtube.com/results?search_query=machine+learning+for+beginners+hindi")
-                    st.write("Deep Learning")
-                    st.link_button("📚 Learn Deep Learning", "https://www.youtube.com/results?search_query=deep+learning+full+course+hindi")
-                
-                st.subheader("💬 Target Interview Flashcards")
-                with st.expander("1. Please introduce yourself."):
-                    st.write("Answer: I am MCA 2nd year student passionate about AI and ML...")
-                with st.expander("2. What are your primary strengths?"):
-                    st.write("Answer: My strengths are Python, Problem Solving...")
-
-elif selected == "Analytics":
-    st.header("📊 Analytics Page")
-    
-elif selected == "About":
-    st.header("ℹ️ About Career Lens AI")
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning With Amit</title>
+    <style>
+        *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+        body{ background:#f5f7fa; }
+        header{ background:#003399; color:white; padding:15px 50px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+        .logo{ font-size:28px; font-weight:bold; }
+        header img{ width:60px; height:60px; border-radius:50%; object-fit:cover; }
+        nav ul{ list-style:none; display:flex; }
+        nav ul li{ margin-left:25px; }
+        nav ul li a{ color:white; text-decoration:none; font-size:18px; }
+        .hero{ display:flex; justify-content:space-between; align-items:center; padding:60px; background:white; flex-wrap:wrap; }
+        .hero-text{ width:50%; min-width:300px; }
+        .hero-text h1{ font-size:50px; color:#003399; }
+        .hero-text span{ color:#ff9900; }
+        .hero-text p{ margin:20px 0; font-size:20px; color:#333; }
+        .btn{ display:inline-block; background:#ff9900; color:white; padding:12px 25px; text-decoration:none; border-radius:5px; }
+        .hero img{ width:300px; border-radius:10px; }
+        footer{ background:#003399; color:white; text-align:center; padding:20px; margin-top:40px; }
+        @media(max-width:768px){ .hero-text{width:100%} header{justify-content:center; gap:15px} }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Learning With Amit</div>
+        <img src="images/pp2.jpeg" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Learning <span>With Amit</span></h1>
+            <p>Learn Computer, O Level, CCC, Typing, MS Office and many more courses.</p>
+            <a href="courses.html" class="btn">Start Learning</a>
+        </div>
+        <img src="images/pp2.jpeg" alt="Teacher">
+    </section>
+    <footer>
+        <p>© 2026 Learning With Amit | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
