@@ -143,13 +143,14 @@ if menu == "Resume Checker":
     st.markdown('<p class="main-title">Career Lens AI</p>', unsafe_allow_html=True)
     st.markdown('<p class="sub-title">Smart Resume Checker for Students</p>', unsafe_allow_html=True)
     st.write("")
-st.markdown('<div class="box">', unsafe_allow_html=True)
-st.markdown("<h3 style='color: #222;'>1️⃣ Upload Your Resume</h3>", unsafe_allow_html=True)
-st.markdown("<p style='color: #333;'>Drag and drop your PDF or DOCX file here</p>", unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
 
-    my_skills = []
-    if uploaded_file != None:
+    st.markdown('<div class="box">', unsafe_allow_html=True)
+    st.markdown("<h3 style='color: #222;'>1️⃣ Upload Your Resume</h3>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #333;'>Drag and drop your PDF or DOCX file here</p>", unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    my_skills = []  # <-- ye line bhi 4 space andar honi chahiye
+    if uploaded_file is not None:
         with st.spinner('🔍 AI is parsing the resume content...'):
             time.sleep(2)
             if uploaded_file.name.endswith('.pdf'):
