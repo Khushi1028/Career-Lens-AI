@@ -8,7 +8,11 @@
         *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
         body{ background:#f5f7fa; }
         header{ background:#003399; color:white; padding:15px 50px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
-        .logo{ font-size:28px; font-weight:bold; }
+       st.markdown("""
+<style>
+.logo { font-size:28px; font-weight:bold; color: #FF4B4B; }
+</style>
+""", unsafe_allow_html=True)
         header img{ width:60px; height:60px; border-radius:50%; object-fit:cover; }
         nav ul{ list-style:none; display:flex; }
         nav ul li{ margin-left:25px; }
