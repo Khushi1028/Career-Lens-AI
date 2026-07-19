@@ -13,8 +13,15 @@ st.markdown("""
 <style>
 .main {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
 .stApp {background: transparent;}
-.main-title {font-size: 3.2rem; color: white; text-align: center; font-weight: 800; text-shadow: 2px 2px 4px #000;}
-.sub-title {text-align: center; font-size: 1.2rem; color: white; font-weight: 500;}
+.main-title {
+    font-size: 4.5rem !important;
+    text-align: center !important;
+    font-weight: 900 !important;
+    color: #1c4aa1 !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.sub-title {text-align: center; font-size: 1.2rem; color: #1c4aa1; font-weight: 500;}
 .box {background: rgba(255,255,255,0.95); padding: 20px; border-radius: 15px; margin: 10px 0px; color: #1e293b;}
 .stButton>button {background: linear-gradient(90deg, #FF6B6B 0%, #FF8E53 100%); color: white; font-weight: bold;
 border-radius: 12px; width: 100%; height: 50px; font-size: 18px; border: none;}
